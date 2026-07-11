@@ -1,3 +1,54 @@
+server:
+  port: 8084
+
 spring:
   application:
     name: payment-service
+
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=paymentservice_db;encrypt=true;trustServerCertificate=true
+    username: ${DB_USERNAME_PAYMENT_SERVICE}
+    password: ${DB_PASSWORD_PAYMENT_SERVICE}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.SQLServerDialect
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+
+jwt:
+  secret: ${JWT_SECRET}
+
+# Payment simulation settings — externalized so behavior is configurable
+# without code changes (mirrors how real gateway sandbox modes work)
+payment:
+  simulation:
+    success-rate: 0.85
+    processing-delay-seconds: 5
+  processor:
+    poll-interval-ms: 3000
+
+# Feign client timeout config — order-service ko call karte waqt
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+
+logging:
+  level:
+    com.ecommerce.paymentservice: DEBUG
