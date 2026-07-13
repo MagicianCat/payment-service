@@ -63,6 +63,8 @@ Key design decisions and the reasoning behind them:
 - Maven
 
 ## 📁 Project Structure
+
+```
 payment-service/
 ├── src/main/java/com/ecommerce/payment_service/
 │   ├── PaymentServiceApplication.java
@@ -81,6 +83,7 @@ payment-service/
 │   └── exception/          # Custom exceptions + GlobalExceptionHandler
 └── src/main/resources/
 └── application.yml
+```
 
 ## 🔌 API Endpoints
 
