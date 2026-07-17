@@ -8,7 +8,7 @@ Payment processing microservice for the E-Commerce Microservices system — simu
 
 `payment-service` is one of six microservices in a larger e-commerce system. It owns the **payment domain** — receiving payment initiation requests from `order-service`, processing them asynchronously through a pluggable, gateway-agnostic abstraction, and reporting the final outcome back to `order-service` via a callback. It is deliberately designed so that the *only* thing "simulated" is the actual bank/card network step — every surrounding architectural pattern (idempotency, async processing, audit ledger, gateway abstraction) mirrors how a real payment integration (Stripe, PayPal, Razorpay) would be built in production.
 
-> This service is part of a larger system. See the [main project README](#) for the full architecture and links to all repositories.
+> This service is part of a larger system. See the [main project README](https://github.com/zainmustafa205/ecommerce-microservices) for the full architecture and links to all repositories.
 
 ### Part of the E-Commerce Microservices Ecosystem
 
